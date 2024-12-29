@@ -23,9 +23,6 @@
 
 <b>*** How to See your website ***</b>
 
-<div style="diplay:flex">
-    <img src="https://github.com/user-attachments/assets/8a5062b5-6bff-42f7-87d3-1de3aec71d67" style="width:150px margin: 5px;" /> -->
-    <img src="https://github.com/user-attachments/assets/ad8fa11e-3192-47ae-9bd8-c18462b7b122" style="width:200px margin: 5px;" /> -->
-    <img src="https://github.com/user-attachments/assets/21d95e32-f649-44e4-a9d0-505935e55429" style="width:200px margin: 5px;" />
-    
+<div style="diplay:flex; flex-wrap: wrap;">
+    <img src="https://github.com/user-attachments/assets/8a5062b5-6bff-42f7-87d3-1de3aec71d67" style="width:150px margin: 5px;" /> --><img src="https://github.com/user-attachments/assets/ad8fa11e-3192-47ae-9bd8-c18462b7b122" style="width:200px margin: 5px;" /> --><img src="https://github.com/user-attachments/assets/21d95e32-f649-44e4-a9d0-505935e55429" style="width:200px margin: 5px;" />
 </div>
