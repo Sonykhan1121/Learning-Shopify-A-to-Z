@@ -56,13 +56,14 @@ JS ->
                   showLoader();
                   setTimeout(() => {
                       window.location.href = this.href;
-                  }, 500);
+                    hideLoader();
+                  }, 1000);
               }
           });
       });
 
       // Handle <button> clicks (ALL buttons on the website)
-      document.querySelectorAll("button").forEach(button => {
+      document.querySelectorAll("button:not(.disclosure__button)").forEach(button => {
           button.addEventListener("click", function(event) {
               showLoader();
 
