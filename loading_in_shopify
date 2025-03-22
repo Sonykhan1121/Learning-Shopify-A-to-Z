@@ -44,7 +44,11 @@ JS ->
           loader.style.display = "flex";
       }
 
-      // Handle <a> clicks (All page links)
+      function hideLoader() {
+          loader.style.display = "none";
+      }
+
+      // Handle <a> tag clicks (Page Navigation)
       document.querySelectorAll("a").forEach(link => {
           link.addEventListener("click", function(event) {
               if (!this.target && this.href.indexOf(window.location.origin) === 0) {
@@ -52,7 +56,7 @@ JS ->
                   showLoader();
                   setTimeout(() => {
                       window.location.href = this.href;
-                  }, 500); // Adjust delay if needed
+                  }, 500);
               }
           });
       });
@@ -61,19 +65,24 @@ JS ->
       document.querySelectorAll("button").forEach(button => {
           button.addEventListener("click", function(event) {
               showLoader();
+
+
+
+              // Check for AJAX-based Shopify actions
+              setTimeout(() => {
+                  hideLoader(); // Stop loader after 3 seconds (Adjust based on need)
+              }, 1000);
           });
       });
 
-      // Handle Shopify dynamic payment buttons (e.g., "Buy it now")
-      document.querySelectorAll(".shopify-payment-button__button").forEach(button => {
-          button.addEventListener("click", function(event) {
-              showLoader();
-          });
+      // Handle Shopify AJAX cart actions
+      document.addEventListener("ajaxComplete", function() {
+          hideLoader();
       });
 
       // Hide loader when the page fully loads
       window.onload = function() {
-          loader.style.display = "none";
+          hideLoader();
       };
   });
 </script>
