@@ -56,23 +56,24 @@ JS ->
                   showLoader();
                   setTimeout(() => {
                       window.location.href = this.href;
-                    hideLoader();
-                  }, 1000);
+                      hideLoader();
+                  }, 2000);
               }
           });
       });
 
       // Handle <button> clicks (ALL buttons on the website)
-      document.querySelectorAll("button:not(.disclosure__button)").forEach(button => {
+       document.querySelectorAll("button:not(.disclosure__button , .search-modal__close-button)").forEach(button => {
           button.addEventListener("click", function(event) {
-              showLoader();
-
-
+              // Check if the button is the one with aria-label="Hello, sign in"
+              if (this.getAttribute('aria-label') !== "Hello, sign in") {
+                  showLoader();
+              }
 
               // Check for AJAX-based Shopify actions
               setTimeout(() => {
                   hideLoader(); // Stop loader after 3 seconds (Adjust based on need)
-              }, 1000);
+              }, 2000);
           });
       });
 
@@ -85,5 +86,49 @@ JS ->
       window.onload = function() {
           hideLoader();
       };
+
+      // Check if the button-content element exists before adding the click event
+      const buttonContent = document.querySelector('.shopify-payment-button');
+      if (buttonContent) {
+          buttonContent.addEventListener('click', function() {
+              showLoader();
+                  setTimeout(() => {
+                      hideLoader();
+                  }, 2000);
+          });
+      } else {
+          console.log('button-content not found');
+      }
+
+
+
+     const homebuttonContent = document.querySelector('.atc-atc-button-home');
+      if (homebuttonContent) {
+        console.log('find home button');
+          homebuttonContent.addEventListener('click', function() {
+              showLoader();
+                  setTimeout(() => {
+                      hideLoader();
+                  }, 2000);
+          });
+      } else {
+          console.log('home button not found');
+      }
+
+    const buybuttonContent = document.querySelector('.atc-button-buy');
+      if (buybuttonContent) {
+        console.log('find buy button');
+          buybuttonContent.addEventListener('click', function() {
+              showLoader();
+                  setTimeout(() => {
+                      hideLoader();
+                  }, 2000);
+          });
+      } else {
+          console.log('buy button not found');
+      }
+
+
   });
 </script>
+
