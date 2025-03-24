@@ -1,0 +1,374 @@
+{%- for block in section.blocks -%}
+  <div class="slider-item">
+    <div class="slider-content">
+      <div class="slider-left">
+        <h2 class="slider-heading">{{ block.settings.text_0 }}</h2>
+        <p class="slider-description">{{ block.settings.richtext_1 }}</p>
+        <span class="slider-number">{{ forloop.index }}</span>
+      </div>
+      <div class="slider-right">
+        {%- assign image_picker_3 = block.settings.image_picker_3 -%}
+        {{ image_picker_3 | image_url: width: 600 | image_tag: class: 'slider-image', loading: 'lazy' }}
+      </div>
+    </div>
+    <button class="slider-button">▶</button>
+  </div>
+{%- endfor -%}
+
+<div class="dots-container">
+  {%- for block in section.blocks -%}
+    <div class="dot" data-index="{{ forloop.index }}">.</div>
+  {%- endfor -%}
+</div>
+<style>
+    /* Reset margins and paddings */
+
+
+  /* Slider item */
+  .slider-item {
+      position: relative;
+      width: 90wh;
+      height: 70vh;  /* Adjust to fit your screen size */
+      display: flex;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      border-radius: 10px;
+      justify-content: center;
+      align-items: center;
+  }
+
+  /* Content container inside each slider item */
+  .slider-content {
+      display: flex;
+      width: 90%;
+      height: 100%;
+  }
+
+  /* Left Side (Text) */
+  .slider-left {
+      width: 50%;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+
+  .slider-heading {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+  }
+
+  .slider-description {
+      font-size: 16px;
+      margin-top: 10px;
+      color: #555;
+  }
+
+  .slider-number {
+      font-size: 14px;
+      color: #888;
+      margin-top: 20px;
+  }
+
+  /* Right Side (Image) */
+  .slider-right {
+      width: 50%;
+      position: relative;
+  }
+
+  .slider-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+  }
+
+  /* Play Button - Centered Over Both Sections */
+  .slider-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 24px;
+      padding: 30px;
+      border-radius: 25%;
+      cursor: pointer;
+      z-index: 5; /* Ensure it’s on top */
+      animation: pulse 1.5s infinite;
+  }
+
+  /* Play Button Hover Effect */
+  .slider-button:hover {
+      background: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Keyframes for the pulsing effect */
+  @keyframes pulse {
+      0% {
+          transform: translate(-50%, -50%) scale(1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      50% {
+          transform: translate(-50%, -50%) scale(1.2);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+      100% {
+          transform: translate(-50%, -50%) scale(1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+  }
+
+  /* Slider Dots - Positioned on the Right Side */
+  .slider-dots {
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .dot {
+      width: 30px;
+      height: 30px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+  }
+
+  .dot.active {
+      background: red;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Slider testing",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "Slider Block",
+      "type": "slider_block",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "text_0"
+        },
+        {
+          "type": "richtext",
+          "label": "Description",
+          "id": "richtext_1"
+        },
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image_picker_3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Slider testing",
+      "blocks": [
+        { "type": "slider_block" },
+        { "type": "slider_block" },
+        { "type": "slider_block" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+   /* Reset margins and paddings */
+
+
+  /* Slider item */
+  .slider-item {
+      position: relative;
+      width: 100%;
+      height: 70vh;  /* Adjust to fit your screen size */
+      display: flex;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      border-radius: 10px;
+      justify-content: center;
+      align-items: center;
+  }
+
+  /* Content container inside each slider item */
+  .slider-content {
+      display: flex;
+      width: 80%;
+      height: 100%;
+  }
+
+  /* Left Side (Text) */
+  .slider-left {
+      width: 50%;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+
+  .slider-heading {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+  }
+
+  .slider-description {
+      font-size: 16px;
+      margin-top: 10px;
+      color: #555;
+  }
+
+  .slider-number {
+      font-size: 14px;
+      color: #888;
+      margin-top: 20px;
+  }
+
+  /* Right Side (Image) */
+  .slider-right {
+      width: 50%;
+      position: relative;
+  }
+
+  .slider-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+  }
+
+  /* Play Button - Centered Over Both Sections */
+  .slider-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      font-size: 24px;
+      padding: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2; /* Ensure it’s on top */
+      animation: pulse 1.5s infinite;
+  }
+
+  /* Play Button Hover Effect */
+  .slider-button:hover {
+      background: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Keyframes for the pulsing effect */
+  @keyframes pulse {
+      0% {
+          transform: translate(-50%, -50%) scale(1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      50% {
+          transform: translate(-50%, -50%) scale(1.2);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+      100% {
+          transform: translate(-50%, -50%) scale(1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+  }
+
+  /* Dots Container Positioned on the Right Side of Image */
+  .dots-container {
+      position: absolute;
+      top: 50%;
+      right: 10px; /* Adjust distance from the right edge */
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 10; /* Ensure dots are above content */
+  }
+
+  /* Dot Style */
+  .dot {
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+  }
+
+  /* Active dot style */
+  .dot.hover {
+      background: red;
+  }
+{% endstylesheet %}
+
+<script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.slider-item');
+  const dots = document.querySelectorAll('.dot');
+  let slideInterval;
+
+  // Function to show a specific slide
+  function showSlide(index) {
+      slides.forEach((slide, i) => {
+          slide.style.display = i === index ? 'flex' : 'none';
+          dots[i].classList.toggle('active', i === index);
+      });
+  }
+
+  // Function to move to the next slide
+  function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length; // Loops back to the first slide
+      showSlide(currentIndex);
+  }
+
+  // Function to manually select a slide (via dots)
+  function currentSlide(index) {
+      currentIndex = index; // Adjust index because dot is 1-based
+      showSlide(currentIndex);
+  }
+
+  // Start the autoplay
+  function startAutoPlay() {
+      slideInterval = setInterval(nextSlide, 4000); // Change slide every 4 seconds
+  }
+
+  // Stop autoplay when hovering over the slider
+  function stopAutoPlay() {
+      clearInterval(slideInterval);
+  }
+
+  // Restart autoplay when leaving the slider
+  function resetAutoPlay() {
+      stopAutoPlay();
+      startAutoPlay();
+  }
+
+  // Initialize the first slide
+  showSlide(0);
+  startAutoPlay();
+
+  // Stop auto-play on hover, resume on leave
+  document.querySelector('.slider-item').addEventListener('mouseenter', stopAutoPlay);
+  document.querySelector('.slider-item').addEventListener('mouseleave', resetAutoPlay);
+
+  // Add event listeners to dots for manual navigation
+  dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => currentSlide(index));
+  });
+</script>

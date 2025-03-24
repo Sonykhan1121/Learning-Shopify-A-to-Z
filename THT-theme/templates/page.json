@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_H3AUgQ": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_dBd6xy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Know More",
+            "heading_size": "h1"
+          }
+        },
+        "text_PU43Xj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Certainly! Here's an \"About Us\" page text tailored for your Shopify store,<strong>LearnWithSony</strong>, where you sell books:</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dBd6xy",
+        "text_PU43Xj"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/download.png",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "image_with_text_H3AUgQ",
+    "main"
+  ]
+}

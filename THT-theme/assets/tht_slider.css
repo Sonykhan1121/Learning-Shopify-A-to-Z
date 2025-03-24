@@ -1,0 +1,92 @@
+.slider-container {
+  position: relative;
+  width: 100%;
+  height:95vh;
+  overflow: hidden;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-item {
+  display: flex;
+  
+  width: 100vw; /* Each slider item takes the full viewport width */
+  position: relative;
+}
+.slider-left {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+/* .textContainer{
+  display:flex;
+  justify-content:center;
+} */
+
+.slider-left, .slider-right {
+  
+  width: 45%; /* Each side takes 45% of the width to leave space for the dots */
+  height:95vh;
+
+}
+
+.slider-middle {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.slider-right img {
+  width: 100%;
+  height: 100%;
+  object-fit:contain;
+}
+
+/* Position the dots vertically on the right, taking 10% width */
+.slider-dots {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  display: block;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  margin: 5px 0;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+.play-button {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.play-button span {
+  vertical-align: left;
+}

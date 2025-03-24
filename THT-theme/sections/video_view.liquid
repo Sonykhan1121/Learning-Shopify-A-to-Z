@@ -1,0 +1,41 @@
+<style>
+video {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+</style>
+
+<video muted autoplay playsinline loop>
+  <source src="{{ section.settings.vd_id }}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+{% schema %}
+{
+  "name": "Video show",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_id",
+      "label": "Enter your text: "
+    },
+    {
+      "type": "video_url",
+      "id": "vd_id",
+      "label": "Pick your video file: ",
+      "accept": [
+    "youtube",
+    "vimeo"
+  ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Show",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

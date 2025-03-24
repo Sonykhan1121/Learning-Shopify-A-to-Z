@@ -1,0 +1,134 @@
+<section class="icon-slider">
+  <div class="icon-slider-wrapper">
+    <div class="icon-slider-container">
+      {% for block in section.blocks %}
+        <div class="icon-slide" data-slide-index="{{ forloop.index }}">
+          <img src="{{ block.settings.icon_image | img_url: '300x' }}" alt="{{ block.settings.icon_alt_text }}">
+        </div>
+      {% endfor %}
+    </div>
+    <!-- Navigation Dots -->
+    <div class="slider-dots">
+      {% for block in section.blocks %}
+        <span class="dot" data-slide-index="{{ forloop.index }}"></span>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Basic Styling */
+  .icon-slider {
+    position: relative;
+    padding: 20px 0;
+    background: linear-gradient(to right, #000000, #0b3c50);
+  }
+
+  .icon-slider-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .icon-slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .icon-slide {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .icon-slide img {
+    max-width: 100px;
+    height: auto;
+  }
+
+  /* Navigation Dots */
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .dot.active {
+    background-color: #0078d4;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sliderContainer = document.querySelector('.icon-slider-container');
+    const slides = document.querySelectorAll('.icon-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    let currentSlide = 0;
+
+    // Function to update the slider position
+    const updateSlider = (index) => {
+      const slideWidth = slides[0].clientWidth;
+      sliderContainer.style.transform = `translateX(-${index * slideWidth}px)`;
+
+      // Update dots
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    };
+
+    // Add click events to dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateSlider(index);
+      });
+    });
+
+    // Initialize the first dot as active
+    dots[0].classList.add('active');
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Icon Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_alt_text",
+          "label": "Alt Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Manual Icon Slider"
+    }
+  ]
+}
+{% endschema %}

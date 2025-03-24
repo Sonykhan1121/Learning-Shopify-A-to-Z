@@ -1,0 +1,552 @@
+{% schema %}
+{
+  "name": "Claude slider",
+  "tag": "section",
+  "class": "custom-slider-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Custom Slider"
+    },
+    {
+      "type": "select",
+      "id": "slider_speed",
+      "label": "Slider Speed",
+      "options": [
+        {
+          "value": "3000",
+          "label": "3 seconds"
+        },
+        {
+          "value": "5000",
+          "label": "5 seconds"
+        },
+        {
+          "value": "7000",
+          "label": "7 seconds"
+        }
+      ],
+      "default": "5000"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show Dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Arrows",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text_button",
+      "name": "Text with Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Slide Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Add your text here</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#f7f7f7"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Button Color",
+          "default": "#333333"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "text_image",
+      "name": "Text with Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Slide Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Add your text here</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image Position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "right"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#f7f7f7"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#333333"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Claude slider",
+      "blocks": [
+        {
+          "type": "text_button"
+        },
+        {
+          "type": "text_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-slider-container">
+  {% if section.settings.heading != blank %}
+    <h2 class="slider-heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+  
+  {% if section.blocks.size > 0 %}
+    <div class="custom-slider" 
+         data-autoplay="{{ section.settings.autoplay }}" 
+         data-speed="{{ section.settings.slider_speed }}">
+      
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'text_button' %}
+            <div class="slide text-button-slide" 
+                 style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }};"
+                 {{ block.shopify_attributes }}>
+              <div class="slide-content">
+                <h3 class="slide-title">{{ block.settings.title }}</h3>
+                <div class="slide-text">{{ block.settings.text }}</div>
+                {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                  <a href="{{ block.settings.button_link }}" class="slide-button" 
+                     style="background-color: {{ block.settings.button_color }}; color: {{ block.settings.button_text_color }};">
+                    {{ block.settings.button_label }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          
+          {% when 'text_image' %}
+            <div class="slide text-image-slide"
+                 style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }};"
+                 {{ block.shopify_attributes }}>
+              <div class="slide-content {% if block.settings.image_position == 'left' %}image-left{% else %}image-right{% endif %}">
+                <div class="slide-text-content">
+                  <h3 class="slide-title">{{ block.settings.title }}</h3>
+                  <div class="slide-text">{{ block.settings.text }}</div>
+                </div>
+                {% if block.settings.image != blank %}
+                  <div class="slide-image">
+                    <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title }}">
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+      
+    </div>
+    
+    {% if section.settings.show_arrows %}
+      <div class="slider-navigation">
+        <button class="slider-arrow prev-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="slider-arrow next-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    {% endif %}
+    
+    {% if section.settings.show_dots %}
+      <div class="slider-dots">
+        {% for block in section.blocks %}
+          <button class="dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></button>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
+
+<style>
+.custom-slider-container {
+  position: relative;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.slider-heading {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.custom-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  display: block;
+  transform: scale(1.02);
+  opacity: 1;
+}
+
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slide-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.slide-text {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.slide-button {
+  display: inline-block;
+  padding: 14px 28px;
+  background: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.slide-button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+.text-image-slide .slide-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slide-image img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.slider-navigation {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.slider-arrow {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  margin: 0 15px;
+}
+
+.slider-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #bbb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #007bff;
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .custom-slider-container {
+    padding: 30px;
+  }
+  
+  .slide-content {
+    padding: 20px;
+  }
+
+  .text-image-slide .slide-content {
+    flex-direction: column;
+  }
+
+  .slide-title {
+    font-size: 22px;
+  }
+
+  .slide-text {
+    font-size: 16px;
+  }
+
+  .slide-button {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+</style>
+
+{{ 'custom-slider.js' | asset_url | script_tag }}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  class CustomSlider {
+    constructor(sliderEl) {
+      this.slider = sliderEl;
+      this.slides = Array.from(this.slider.querySelectorAll('.slide'));
+      this.dots = Array.from(document.querySelectorAll('.slider-dots .dot'));
+      this.prevArrow = document.querySelector('.prev-arrow');
+      this.nextArrow = document.querySelector('.next-arrow');
+      this.currentIndex = 0;
+      this.autoplay = this.slider.dataset.autoplay === 'true';
+      this.speed = parseInt(this.slider.dataset.speed);
+      this.autoplayInterval = null;
+      
+      this.init();
+    }
+    
+    init() {
+      if (this.slides.length === 0) return;
+      
+      // Set initial active slide
+      this.showSlide(this.currentIndex);
+      
+      // Set up event listeners
+      if (this.prevArrow) {
+        this.prevArrow.addEventListener('click', () => {
+          this.prevSlide();
+          this.resetAutoplay();
+        });
+      }
+      
+      if (this.nextArrow) {
+        this.nextArrow.addEventListener('click', () => {
+          this.nextSlide();
+          this.resetAutoplay();
+        });
+      }
+      
+      this.dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          this.showSlide(index);
+          this.resetAutoplay();
+        });
+      });
+      
+      // Start autoplay if enabled
+      if (this.autoplay) {
+        this.startAutoplay();
+      }
+      
+      // Add touch events for mobile
+      this.addTouchEvents();
+    }
+    
+    showSlide(index) {
+      this.slides.forEach(slide => slide.classList.remove('active'));
+      this.dots.forEach(dot => dot.classList.remove('active'));
+      
+      this.slides[index].classList.add('active');
+      if (this.dots[index]) {
+        this.dots[index].classList.add('active');
+      }
+      
+      this.currentIndex = index;
+    }
+    
+    nextSlide() {
+      const nextIndex = (this.currentIndex + 1) % this.slides.length;
+      this.showSlide(nextIndex);
+    }
+    
+    prevSlide() {
+      const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+      this.showSlide(prevIndex);
+    }
+    
+    startAutoplay() {
+      this.autoplayInterval = setInterval(() => {
+        this.nextSlide();
+      }, this.speed);
+    }
+    
+    resetAutoplay() {
+      if (this.autoplay) {
+        clearInterval(this.autoplayInterval);
+        this.startAutoplay();
+      }
+    }
+    
+    addTouchEvents() {
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      this.slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      this.slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        this.handleSwipe(touchStartX, touchEndX);
+      }, { passive: true });
+    }
+     handleSwipe(startX, endX) {
+      const threshold = 50;
+      if (startX - endX > threshold) {
+        // Swipe left
+        this.nextSlide();
+        this.resetAutoplay();
+      } else if (endX - startX > threshold) {
+        // Swipe right
+        this.prevSlide();
+        this.resetAutoplay();
+      }
+    }
+  }
+  
+  // Initialize all sliders on the page
+  const sliders = document.querySelectorAll('.custom-slider');
+  sliders.forEach(slider => {
+    new CustomSlider(slider);
+  });
+});
+</script>

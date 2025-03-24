@@ -1,0 +1,127 @@
+<link href="{{ 'tht_slider.css' | asset_url }}" rel="stylesheet" type="text/css">
+
+<div class="slider-container">
+  <div class="slider-wrapper">
+    {% for block in section.blocks %}
+      <div class="slider-item">
+        <div class="slider-left">
+          <div class="textContainer">
+            <p class="slider-number">{{ forloop.index }}</p>
+            <h2 class="slider-heading">{{ block.settings.heading }}</h2>
+            <p class="slider-message">{{ block.settings.message }}</p>
+          </div>
+        </div>
+
+        <div class="slider-middle">
+          <a href="{{ block.settings.video_url }}" class="play-button"> <span>▶</span> </a>
+        </div>
+
+        <div class="slider-right">
+          <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Slider Image">
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Dots for navigation -->
+  <div class="slider-dots">
+    {% for block in section.blocks %}
+      <span class="dot" data-slide="{{ forloop.index }}"></span>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "THT slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slider_block",
+      "name": "Slider Block 1",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "heading",
+          "default": "Your Heading Here"
+        },
+        {
+          "type": "textarea",
+          "label": "Message",
+          "id": "message",
+          "default": "Your message goes here."
+        },
+        {
+          "type": "url",
+          "label": "Video URL",
+          "id": "video_url",
+
+        },
+        {
+          "type": "image_picker",
+          "label": "Image",
+          "id": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "THT Custom Slider",
+      "category": "Custom",
+      "blocks": [
+        {"type": "slider_block"},
+         {"type": "slider_block"},
+         {"type": "slider_block"}
+      ]
+    }
+  ]
+}
+{% endschema %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll('.slider-item');
+  const totalSlides = slides.length;
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const dots = document.querySelectorAll('.dot');
+
+  let currentIndex = 0;
+
+  // Set the width of the slider-wrapper based on the number of slides
+  sliderWrapper.style.width = `${totalSlides * 100}vw`;
+
+  // Function to show the correct slide
+  function showSlide(index) {
+    if (index >= totalSlides) currentIndex = 0;  // Loop back to the first slide
+    else if (index < 0) currentIndex = totalSlides - 1; // Loop to the last slide
+    else currentIndex = index;
+
+    // Move the wrapper to show the current slide
+    sliderWrapper.style.transform = `translateX(-${currentIndex * 100}vw)`;
+
+    // Update active dot
+    dots.forEach((dot, i) => {
+      dot.classList.remove('active');
+      if (i === currentIndex) {
+        dot.classList.add('active');
+      }
+    });
+  }
+
+  // Navigation for dots
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', function () {
+      showSlide(i);
+    });
+  });
+
+  // Automatically move to the next slide every 5 seconds
+  setInterval(() => {
+    showSlide(currentIndex + 1);
+  }, 5000);
+
+  // Initialize the first slide
+  showSlide(currentIndex);
+});
+</script>

@@ -1,0 +1,64 @@
+<div class="test">
+  <h1 style="text-align:center">{{ page.title }}</h1>
+
+  {% comment %}
+    This is for testing purpose
+  {% endcomment %}
+
+  {% comment %}
+    Operator
+  {% endcomment %}
+
+  {% assign num1 = 10 %}
+  {% assign num2 = 20 %}
+  {% assign num3 = 30 %}
+
+  <h1 style="text-align:center">
+    Addition = {{ num1 | plus: num2 }}
+    <br>
+    substraction = {{ num2 | minus: num1 }}
+    <br>
+    multiplication ={{ num1 | times: num2 }}
+    <br>
+    division = {{ num2 | divided_by: num1 }}
+
+    <br>
+    modulo = {{ 5 | modulo: 3 }}
+    <br>
+    {% if num1 >= num2 and num1 >= num3 %}
+      {{ num1 }} is greater
+    {% elsif num2 >= num1 and num2 >= num3 %}
+      {{ num2 }} is greater
+    {% else %}
+      {{ num3 }} is greater
+    {% endif %}
+
+    <br>
+    {% assign color = 'green' %}
+
+    {% case color %}
+      {% when 'green' %}
+        color is : {{ color }}
+      {% when 'blue' %}
+        color is : {{ color }}
+      {% else %}
+        None of the above
+    {% endcase %}
+    <br>
+    {% for i in (0..9) %}
+      this index is : {{ i }}
+      <br>
+    {% endfor %}
+    <br>
+
+    {% for collection in collections %}
+      {{ collection.title }} : <br>
+      {% for product in collection.products %}
+        {{ product.title -}}
+        <br>
+      {% endfor %}
+      <br>
+      End<br>
+    {% endfor %}
+  </h1>
+</div>

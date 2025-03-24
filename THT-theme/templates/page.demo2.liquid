@@ -1,0 +1,21 @@
+<div>
+  <h1 style="text-align: center">
+    {{ page_title }}
+    <br>
+    {{ page_description }}
+    <br>
+    {% assign name = 'Sony Khan' %}
+
+    {{ name | downcase | remove: 'khan' }}
+
+    <br>
+    {% assign numbers = '1,2,3,4,5' | split: ',' %}
+    {% for i in numbers %}
+      {{ i | plus: 1 }}
+      <br>
+    {% endfor %}
+    <br>
+
+    {{ section.blocks }}
+  </h1>
+</div>

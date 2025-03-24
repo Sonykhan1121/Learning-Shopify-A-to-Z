@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Text</title>
+</head>
+<body>
+    <div class="container">
+        <div class="circle">
+            <p id="text">- Scroll - Down - Work - Together </p>
+            <!-- Logo in the center -->
+            <img src="https://cdn.shopify.com/s/files/1/0731/9132/5938/files/letter-a.png?v=1735572110" alt="Logo" id="logo" />
+        </div>
+    </div>
+  
+    <!-- https://circletype.labwire.ca/ -->
+    <script src="https://cdn.jsdelivr.net/npm/circletype@2.3.0/dist/circletype.min.js"></script>
+  
+    <script>
+        const text = document.getElementById('text')
+        const rotate = new CircleType(text).radius(50)
+  
+        window.addEventListener('scroll', function(){
+            text.style.transform = 'rotate(' + (window.scrollY * 0.15) + 'deg)'
+        })
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+    }
+
+    #text {
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .container {
+        position: relative;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .circle {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #logo {
+        position: absolute;
+        width: 30px; /* Set the desired size of the logo */
+        height: 30px; /* Set the desired size of the logo */
+        z-index: 10; /* Ensures logo stays on top */
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Growth header",
+    "settings": [
+        {
+            "type": "text",
+            "label": "Slogan : ",
+            "id": "slogan",
+            "default": "Scroll Down Work Together"
+        },
+        {
+            "type": "color",
+            "label": "Primary Color",
+            "id": "primary_color",
+            "default": "#000000"
+        }
+    ],
+    "presets": [
+        {
+            "name": "growth header"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,415 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "marquee_eppGnB": {
+      "type": "marquee",
+      "settings": {
+        "text": "50% OFF on Winter Products",
+        "colorBackground": "#e70000",
+        "colorText": "#ffffff",
+        "link": ""
+      }
+    },
+    "slider_final_aUPPfN": {
+      "type": "slider_final",
+      "blocks": {
+        "slider_block_cxRXGd": {
+          "type": "slider_block",
+          "settings": {
+            "text_0": "Heading1",
+            "richtext_1": "<p>Description1</p>",
+            "image_picker_3": "shopify://shop_images/working-at-night.jpg"
+          }
+        },
+        "slider_block_qkgNzn": {
+          "type": "slider_block",
+          "settings": {
+            "text_0": "",
+            "richtext_1": "",
+            "image_picker_3": "shopify://shop_images/hand-over-a-cellphone-showing-shopify-app.jpg"
+          }
+        },
+        "slider_block_Kz8gDm": {
+          "type": "slider_block",
+          "settings": {
+            "text_0": "",
+            "richtext_1": "",
+            "image_picker_3": "shopify://shop_images/a-close-up-of-black-microphone.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "slider_block_cxRXGd",
+        "slider_block_qkgNzn",
+        "slider_block_Kz8gDm"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "slideshow_Nt8UDt": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_3Lqgcd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/mens-fashion-man-in-shirt-and-jeans-leaning-on-bicycle.jpg",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_WkqVCj": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/man-in-suit-on-stairs.jpg",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_7wbPYd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/download_e6d2d9cf-4f61-4553-b06a-f6afc8d1b84b.jpg",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_YVwVJE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/pet-and-owner-on-fall-walk.jpg",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_rrpbn3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/download_39a65213-a29a-4a1f-9a1b-f1607b825f51.jpg",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_3Lqgcd",
+        "slide_WkqVCj",
+        "slide_7wbPYd",
+        "slide_YVwVJE",
+        "slide_rrpbn3"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "image_behavior": "ambient",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "collection_list_jjwChL": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_nKcWc4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "men-watches"
+          }
+        },
+        "featured_collection_UJiULk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shirts"
+          }
+        },
+        "featured_collection_kangVK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sunglasses"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_nKcWc4",
+        "featured_collection_UJiULk",
+        "featured_collection_kangVK"
+      ],
+      "settings": {
+        "title": "Special Products",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "claude_slider_A4LPaQ": {
+      "type": "claude_slider",
+      "blocks": {
+        "text_image_xWakdW": {
+          "type": "text_image",
+          "settings": {
+            "title": "test2",
+            "text": "<p>Add your text here</p>",
+            "image": "shopify://shop_images/urban-mens-fashion-on-young-adult.jpg",
+            "image_position": "right",
+            "bg_color": "#f7f7f7",
+            "text_color": "#333333"
+          }
+        },
+        "text_image_XhTcVB": {
+          "type": "text_image",
+          "settings": {
+            "title": "test2",
+            "text": "<p>Add your text here</p>",
+            "image": "shopify://shop_images/model-with-leather-jacket-over-shoulders.jpg",
+            "image_position": "left",
+            "bg_color": "#f7f7f7",
+            "text_color": "#333333"
+          }
+        },
+        "text_image_zfrJC3": {
+          "type": "text_image",
+          "settings": {
+            "title": "test2",
+            "text": "<p>Add your text here</p>",
+            "image": "shopify://shop_images/urban-mens-fashion-on-young-adult.jpg",
+            "image_position": "right",
+            "bg_color": "#f7f7f7",
+            "text_color": "#333333"
+          }
+        },
+        "text_image_qg3LUh": {
+          "type": "text_image",
+          "settings": {
+            "title": "test2",
+            "text": "<p>Add your text here</p>",
+            "image": "shopify://shop_images/urban-mens-fashion-on-young-adult.jpg",
+            "image_position": "right",
+            "bg_color": "#f7f7f7",
+            "text_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "text_image_xWakdW",
+        "text_image_XhTcVB",
+        "text_image_zfrJC3",
+        "text_image_qg3LUh"
+      ],
+      "settings": {
+        "heading": "Custom Slider",
+        "slider_speed": "5000",
+        "autoplay": true,
+        "show_dots": true,
+        "show_arrows": true
+      }
+    },
+    "contact_form_z9rARF": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Contact form",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1735463175ed85d6b6": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "slideshow_hJemMB": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_9U6r6J": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_iYAemk": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_9U6r6J",
+        "slide_iYAemk"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "ambient",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "icon_slider_aUQBDP": {
+      "type": "icon_slider",
+      "blocks": {
+        "icon_MdXywE": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/tiktok.png",
+            "icon_alt_text": ""
+          }
+        },
+        "icon_Q6rq9c": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/lazda.png",
+            "icon_alt_text": ""
+          }
+        },
+        "icon_YEAQDQ": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/amazon.png",
+            "icon_alt_text": ""
+          }
+        },
+        "icon_jbcBbb": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/logo.png",
+            "icon_alt_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "icon_MdXywE",
+        "icon_Q6rq9c",
+        "icon_YEAQDQ",
+        "icon_jbcBbb"
+      ],
+      "settings": {}
+    },
+    "1735463189df3fc79a": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_4FmFGG": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_4FmFGG"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "test_purpose_wYYUGD": {
+      "type": "test_purpose",
+      "settings": {}
+    }
+  },
+  "order": [
+    "marquee_eppGnB",
+    "slider_final_aUPPfN",
+    "slideshow_Nt8UDt",
+    "collection_list_jjwChL",
+    "claude_slider_A4LPaQ",
+    "contact_form_z9rARF",
+    "1735463175ed85d6b6",
+    "slideshow_hJemMB",
+    "icon_slider_aUQBDP",
+    "1735463189df3fc79a",
+    "test_purpose_wYYUGD"
+  ]
+}

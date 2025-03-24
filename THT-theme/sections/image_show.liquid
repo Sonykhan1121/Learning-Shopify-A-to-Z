@@ -1,0 +1,41 @@
+<div class="image-container">
+  <img src="{{ section.settings.img_id |img_url: "original" }}" alt="Selected Image">
+</div>
+<style>
+    .image-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 50vh; /* Adjust to the desired container height */
+  }
+
+  .image-container img {
+    width: auto; /* Keep the original width */
+    height: auto; /* Keep the original height */
+    max-width: 100%; /* Ensure it fits within the container */
+    max-height: 100%; /* Prevent overflow */
+  }
+</style>
+{% schema %}
+{
+  "name": "Image show",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_id",
+      "label": "Enter your text: "
+    },
+    {
+      "type": "image_picker",
+      "id": "img_id",
+      "label": "Pick your image file: "
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Show",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

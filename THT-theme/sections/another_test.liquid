@@ -1,0 +1,93 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'slide' -%}
+      {%-
+        # #########################################################################
+        # Label: heading
+        # Returns: a string or an empty object(if nothing has been entered)
+        # Filters: https://shopify.dev/api/liquid/objects#string
+        ##########################################################################
+      -%}
+      {{ block.settings.heading }}
+
+      {%-
+        # #########################################################################
+        # Label: Message
+        # Returns: a string or an empty object(if nothing has been entered)
+        # Filters: https://shopify.dev/api/liquid/objects#string
+        ##########################################################################
+      -%}
+      {{ block.settings.message }}
+
+      {%-
+        # #########################################################################
+        # Label: play button
+        # Returns: a string(the entered URL) or nil / false(if nothing has been entered)
+        # Access video ID: {{ block.settings.play_button.id }}
+        # Access video Type: {{ block.settings.play_button.type }}
+        ##########################################################################
+      -%}
+      {{ block.settings.play_button }}
+
+      {%-
+        # #########################################################################
+        # Label: image
+        # Returns: an image object or nil(if no selection has been made)
+        # Image Properties: https://shopify.dev/api/liquid/objects#image
+        # Image Filters: https://shopify.dev/api/liquid/filters#image_tag, https://shopify.dev/api/liquid/filters#image_url
+        ##########################################################################
+      -%}
+      {%- assign image = block.settings.image -%}
+      {{ image | image_url: width: image.width | image_tag: class: 'add_your_class_here', loading: 'lazy' }}
+  {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+  {
+  "name": "Code In Shopify Section",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "heading"
+        },
+        {
+          "type": "richtext",
+          "id": "message",
+          "label": "Message"
+        },
+        {
+          "type": "video_url",
+          "id": "play_button",
+          "label": "play button",
+          "accept": [
+            "youtube",
+            "vimeo"
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tesing1"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
